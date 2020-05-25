@@ -1,0 +1,4 @@
+mysql-data/
+api/.env
+view/.env
+view/node_modules
