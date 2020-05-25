@@ -1,4 +1,4 @@
 mysql-data/
 api/.env
-view/.env
-view/node_modules
+vue/.env
+vue/node_modules
