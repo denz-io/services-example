@@ -14,5 +14,10 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    return response()->json([
+        'Service' => 'Example Api', 
+        'Status'  => 'Setup is fine'
+    ]);
 });
+
+$router->get('user[/{user}]', 'User@get');
