@@ -21,3 +21,6 @@ $router->get('/', function () use ($router) {
 });
 
 $router->get('user[/{user}]', 'User@get');
+$router->get('user/delete/{user}', 'User@delete');
+$router->post('user/create', 'User@create');
+$router->post('user/update', 'User@udpate');

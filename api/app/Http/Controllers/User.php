@@ -12,11 +12,14 @@ class User extends Controller
      * @param $user 
      * @return JSON 
      */
-    public function get($user)
+    public function get($user = null)
     {
-        return response()->json(
-            Users::find($user) 
-        );
+        if ($user) {
+            $found = Users::find($user); 
+        } else {
+            $found = Users::all();
+        }
+        return response()->json($found);
     }
 
     /**
@@ -39,7 +42,7 @@ class User extends Controller
      */
     public function save(Request $request)
     {
-        User::find($request->id)->update($request);
+        Users::find($request->id)->update($request);
         return response()->json([
             'message' => 'user info has been saved'
         ]);
@@ -52,9 +55,14 @@ class User extends Controller
      */
     public function delete($user)
     {
-        User::find($request->id)->delete();
+        if ($user = Users::find($user)) {
+            $user->delete();
+            return response()->json([
+                'message' => 'user has been deleted'
+            ]);
+        }
         return response()->json([
-            'message' => 'user has been deleted'
+            'message' => 'user not found'
         ]);
     }
 }
