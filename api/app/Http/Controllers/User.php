@@ -40,7 +40,7 @@ class User extends Controller
      * @param Request $request
      * @return JSON 
      */
-    public function save(Request $request)
+    public function update(Request $request)
     {
         Users::find($request->id)->update($request);
         return response()->json([
